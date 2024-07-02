@@ -126,7 +126,6 @@ class LinkedList:
         temp = self.head
         self.head = self.tail
         self.tail = temp
-        right = temp.next
         left = None
         for _ in range(self.length):
             right = temp.next
