@@ -29,7 +29,16 @@ class HashTable:
 		index = self.__hash(key)
 		if self.data_map[index] is None:
 			self.data_map[index] = []
-		self.data_map[index].append((key, value))
+		temp = 0
+		added = False
+		while not added and temp < len(self.data_map[index]):
+			if self.data_map[index][temp][0] == key:
+				self.data_map[index][temp][1] = value
+				added = True
+			else:
+				temp += 1
+		if not added:
+			self.data_map[index].append([key, value])
 
 	def get(self, key):
 		index = self.__hash(key)
