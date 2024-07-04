@@ -28,10 +28,9 @@ class Node:
 
 
 class Stack:
-	def __init__(self, value):
-		new_node = Node(value)
-		self.top = new_node
-		self.height = 1
+	def __init__(self):
+		self.top = None
+		self.height = 0
 
 	def print_stack(self):
 		temp = self.top
