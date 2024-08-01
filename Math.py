@@ -9,25 +9,27 @@ PARENTHESES_CLOSED = '\\)'
 
 
 def _calc(v1, v2, operator):  # Switch Statements
-	if operator == '+':
-		return v1 + v2
-	if operator == '-':
-		return v1 - v2
-	if operator == '*':
-		return v1 * v2
-	if operator == '/':
-		return v1 / v2
-	if operator == '%':
-		return v1 % v2
-	if operator == '**':
-		return v1 ** v2
-	if operator == '//':
-		return v1 // v2
-	if operator == '++':
-		return v1 + 1
-	if operator == '--':
-		return v1 + 1
-	return None
+	match operator:
+		case '+':
+			return v1 + v2
+		case '-':
+			return v1 - v2
+		case '*':
+			return v1 * v2
+		case '/':
+			return v1 / v2
+		case '%':
+			return v1 % v2
+		case '**':
+			return v1 ** v2
+		case '//':
+			return v1 // v2
+		case '++':
+			return v1 + 1
+		case '--':
+			return v1 + 1
+		case _:
+			return None
 
 
 def _calc_expression_stack(expression: Stack) -> int:

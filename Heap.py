@@ -78,18 +78,3 @@ class MaxHeap:
 		self._sink_down(0)
 
 		return max_value
-
-
-mh = MaxHeap()
-mh.insert(95)
-mh.insert(75)
-mh.insert(80)
-mh.insert(55)
-mh.insert(60)
-mh.insert(50)
-mh.insert(65)
-print(mh.heap)
-mh.remove()
-print(mh.heap)
-mh.remove()
-print(mh.heap)
