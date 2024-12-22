@@ -26,6 +26,7 @@ Remove: LL O(n), BST O(log n)
 Insert: LL O(1), BST O(log n) cuz of traversal
 LL is very quick with appending, no other DS beats it
 '''
+import Queue
 
 
 class Node:
@@ -129,16 +130,15 @@ class BinarySearchTree:
 
 	def bfs(self):
 		current_node = self.root
-		queue = []
+		queue = Queue.Queue(current_node)
 		results = []
-		queue.append(current_node)
-		while queue:
-			current_node = queue.pop(0)
+		while queue.length:
+			current_node = queue.dequeue()
 			results.append(current_node.value)
 			if current_node.left:
-				queue.append(current_node.left)
+				queue.enqueue(current_node.left)
 			if current_node.right:
-				queue.append(current_node.right)
+				queue.enqueue(current_node.right)
 		return results
 
 	def dfs_preorder(self):
@@ -155,7 +155,30 @@ class BinarySearchTree:
 		return results
 
 	def dfs_postorder(self):
-		pass
+		results = []
+
+		def traverse(current_node):
+			if current_node.left:
+				traverse(current_node.left)
+			if current_node.right:
+				traverse(current_node.right)
+			results.append(current_node.value)
+
+		traverse(self.root)
+		return results
+
+	def dfs_inorder(self):
+		results = []
+
+		def traverse(current_node):
+			if current_node.left:
+				traverse(current_node.left)
+			results.append(current_node.value)
+			if current_node.right:
+				traverse(current_node.right)
+
+		traverse(self.root)
+		return results
 
 
 bst = BinarySearchTree()
@@ -166,4 +189,4 @@ bst.r_insert(18)
 bst.r_insert(27)
 bst.r_insert(52)
 bst.r_insert(82)
-print(bst.dfs_preorder())
+print(bst.dfs_inorder())

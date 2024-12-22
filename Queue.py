@@ -56,4 +56,4 @@ class Queue:
 			self.first = temp.next
 			temp.next = None
 		self.length -= 1
-		return temp
+		return temp.value
