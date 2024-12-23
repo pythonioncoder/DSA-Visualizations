@@ -7,6 +7,3 @@ def bubble_sort(unsorted):
 				unsorted[j] = temp
 
 	return unsorted
-
-
-print(bubble_sort([4, 2, 6, 5, 1, 3]))
