@@ -63,3 +63,8 @@ def merge_sort(current: Vis, lo, hi):
 			current.highlights[lo + l + r] = current.barcol
 
 	return current.lst[lo:hi]
+
+
+if __name__ == '__main__':
+	my_vis = Vis()
+	merge_sort(my_vis, 0, len(my_vis.lst))
