@@ -9,6 +9,7 @@ class Vis:
 		self.lst = []
 		self.x = np.arange(0, self.amount, 1)
 		self.highlights = np.full(self.amount, barcol)
+		self.end = False
 
 		vals = np.arange(self.amount)
 		for i in vals:
@@ -18,6 +19,9 @@ class Vis:
 		self.lst = np.array(self.lst)
 
 	def display(self):
+		if self.end:
+			plt.close()
+			return
 		plt.clf()
 		plt.gcf().set_facecolor('black')
 		plt.bar(self.x, self.lst, color=self.highlights)
@@ -61,7 +65,13 @@ def _quick_sort(current: Vis, lo, hi):
 		current.display()
 		current.highlights[lo+i], current.highlights[lo+j], current.highlights[lo+pivot_index] = current.barcol, current.barcol, current.barcol
 
-	return _quick_sort(current, lo, lo+i) + _quick_sort(current, lo+i, hi)
+	res = _quick_sort(current, lo, lo+i) + _quick_sort(current, lo+i, hi)
+
+	if lo == 0 and hi == len(current.lst):
+		current.end = True
+		current.display()
+
+	return res
 
 
 def quick_sort(current: Vis):

@@ -9,6 +9,7 @@ class Vis:
 		self.lst = []
 		self.x = np.arange(0, self.amount, 1)
 		self.highlights = np.full(self.amount, barcol)
+		self.end = False
 
 		vals = np.arange(self.amount)
 		for i in vals:
@@ -18,6 +19,9 @@ class Vis:
 		self.lst = np.array(self.lst)
 
 	def display(self):
+		if self.end:
+			plt.close()
+			return
 		plt.clf()
 		plt.gcf().set_facecolor('black')
 		plt.bar(self.x, self.lst, color=self.highlights)
@@ -61,6 +65,10 @@ def _merge_sort(current: Vis, lo, hi):
 			current.highlights[lo + l + r] = 'green'
 			current.display()
 			current.highlights[lo + l + r] = current.barcol
+
+	if lo == 0 and hi == len(current.lst):
+		current.end = True
+		current.display()
 
 	return current.lst[lo:hi]
 

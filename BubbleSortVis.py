@@ -9,6 +9,7 @@ class Vis:
 		self.lst = []
 		self.x = np.arange(0, self.amount, 1)
 		self.highlights = np.full(self.amount, barcol)
+		self.end = False
 
 		vals = np.arange(self.amount)
 		for i in vals:
@@ -18,6 +19,9 @@ class Vis:
 		self.lst = np.array(self.lst)
 
 	def display(self):
+		if self.end:
+			plt.close()
+			return
 		plt.clf()
 		plt.gcf().set_facecolor('black')
 		plt.bar(self.x, self.lst, color=self.highlights)
@@ -36,6 +40,9 @@ def bubble_sort(current: Vis):
 				current.highlights[j] = 'green'
 				current.display()
 				current.highlights[j] = current.barcol
+
+	current.end = True
+	current.display()
 
 	return unsorted
 
