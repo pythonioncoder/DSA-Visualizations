@@ -25,7 +25,7 @@ class Vis:
 		plt.pause(0.0001)
 
 
-def quick_sort(current: Vis, lo, hi):
+def _quick_sort(current: Vis, lo, hi):
 	unsorted = current.lst[lo:hi]
 
 	if len(unsorted) < 2:
@@ -61,9 +61,13 @@ def quick_sort(current: Vis, lo, hi):
 		current.display()
 		current.highlights[lo+i], current.highlights[lo+j], current.highlights[lo+pivot_index] = current.barcol, current.barcol, current.barcol
 
-	return quick_sort(current, lo, lo+i) + quick_sort(current, lo+i, hi)
+	return _quick_sort(current, lo, lo+i) + _quick_sort(current, lo+i, hi)
+
+
+def quick_sort(current: Vis):
+	return _quick_sort(current, 0, len(current.lst))
 
 
 if __name__ == '__main__':
 	my_vis = Vis()
-	quick_sort(my_vis, 0, len(my_vis.lst))
+	quick_sort(my_vis)

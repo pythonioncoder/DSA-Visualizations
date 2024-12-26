@@ -25,14 +25,14 @@ class Vis:
 		plt.pause(0.0001)
 
 
-def merge_sort(current: Vis, lo, hi):
+def _merge_sort(current: Vis, lo, hi):
 	unsorted = current.lst[lo:hi]
 
 	if len(unsorted) < 2:
 		return unsorted
 
-	left = merge_sort(current, lo, lo + round(len(unsorted)/2)).copy()
-	right = merge_sort(current, lo + round(len(unsorted)/2), hi).copy()
+	left = _merge_sort(current, lo, lo + round(len(unsorted)/2)).copy()
+	right = _merge_sort(current, lo + round(len(unsorted)/2), hi).copy()
 
 	l, r = 0, 0
 	while l < len(left) and r < len(right):
@@ -65,6 +65,10 @@ def merge_sort(current: Vis, lo, hi):
 	return current.lst[lo:hi]
 
 
+def merge_sort(current: Vis):
+	return _merge_sort(current, 0, len(current.lst))
+
+
 if __name__ == '__main__':
 	my_vis = Vis()
-	merge_sort(my_vis, 0, len(my_vis.lst))
+	merge_sort(my_vis)
