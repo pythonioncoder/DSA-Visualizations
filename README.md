@@ -1,6 +1,6 @@
 # DSA and Visualizations in Python
 
-Hey! I've made a variety of basic data structres in Python, alongside a few sorting algorithms. However, due to the sometimes difficult concepts surrounding some of them, mainly merge and quick sort, I've also made visualizations using matplotlib and numpy for each sorting algorithm. If you want to see a default sort (something like this:)
+Hey! I've made a variety of basic data structres in Python, alongside a few sorting algorithms. However, due to the sometimes difficult concepts surrounding some of them, mainly merge and quick sort, I've also made visualizations using matplotlib, numpy, and pygame for each sorting algorithm. If you want to see a default sort (something like this:)
 
 ![quicksort.gif](https://github.com/pythonioncoder/DSA-Visualizations/blob/f9cca96bf578f68bba5a6a3f20423be5930cb022/quicksort.gif)
 
